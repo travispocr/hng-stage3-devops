@@ -48,16 +48,12 @@ services:
       - hng-network
 
   detector:
-    image: python:3.11-slim
+    build:
+      context: ./detector
+      dockerfile: Dockerfile
     container_name: hng-detector
     ports:
       - "8080:8080"
-    working_dir: /app
-    command: >
-      bash -c "
-        pip install -r requirements.txt -q &&
-        python main.py
-      "
     volumes:
       - ./detector:/app
       - HNG-nginx-logs:/var/log/nginx:ro
