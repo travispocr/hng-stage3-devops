@@ -1,0 +1,11 @@
+.env
+**/.env
+*.env
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.log
+.DS_Store
+*.pem
+*.key
