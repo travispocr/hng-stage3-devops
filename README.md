@@ -170,7 +170,8 @@ All systems running!
 ---
 
 ## Blog Post
-*Coming soon — will be published on Dev.to*
+Published on Dev.to:
+**https://dev.to/devops_journey_4b18fb2ab9/how-i-built-a-real-time-ddos-detection-engine-from-scratch-no-fail2ban-allowed-2e59**
 
 ---
 
