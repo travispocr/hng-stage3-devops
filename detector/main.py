@@ -13,9 +13,16 @@ import os
 
 
 def load_config(path="config.yaml"):
-    """Load configuration from YAML file."""
+    """Load configuration from YAML file, substitute env vars."""
+    import os
     with open(path, "r") as f:
-        return yaml.safe_load(f)
+        content = f.read()
+    # Substitute environment variables
+    content = content.replace(
+        "${SLACK_WEBHOOK_URL}",
+        os.environ.get("SLACK_WEBHOOK_URL", "")
+    )
+    return yaml.safe_load(content)
 
 
 def main():

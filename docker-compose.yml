@@ -69,6 +69,7 @@ services:
       - NET_ADMIN
     environment:
       - PYTHONUNBUFFERED=1
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
 
 volumes:
   HNG-nginx-logs:
