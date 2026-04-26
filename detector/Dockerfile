@@ -6,15 +6,15 @@ RUN pip install --upgrade pip && \
 
 FROM python:3.11-slim
 WORKDIR /app
-COPY --from=builder /install /usr/local
-COPY . .
 
 RUN apt-get update && \
-    apt-get install -y iptables && \
-    rm -rf /var/lib/apt/lists/* && \
-    useradd -m appuser
+    apt-get install -y --no-install-recommends \
+    iptables \
+    iproute2 && \
+    rm -rf /var/lib/apt/lists/*
 
-USER root
+COPY --from=builder /install /usr/local
+COPY . .
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8080/')" || exit 1
